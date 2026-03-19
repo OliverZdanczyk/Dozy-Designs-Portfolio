@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dozy Designs — Beauty Websites That Convert</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garant:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #FAFAF8;
+    --bg2: #F2EDE8;
+    --text: #1A1714;
+    --text-muted: #8A8480;
+    --accent: #B8906A;
+    --accent-light: #F0E6DB;
+    --border: #E4DDD7;
+    --white: #FFFFFF;
+    --radius: 16px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 20px 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: rgba(250,250,248,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .nav-logo span {
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .nav-cta {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--text);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 9px 20px;
+    border-radius: 100px;
+    transition: all 0.2s ease;
+  }
+
+  .nav-cta:hover {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+  }
+
+  /* HERO */
+  .hero {
+    padding: 160px 48px 100px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-light);
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 32px;
+  }
+
+  .hero-tag::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garant', serif;
+    font-size: clamp(52px, 7vw, 88px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 28px;
+    max-width: 800px;
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-sub {
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--text-muted);
+    max-width: 480px;
+    line-height: 1.7;
+    margin-bottom: 44px;
+  }
+
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--text);
+    color: var(--bg);
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    padding: 14px 28px;
+    border-radius: 100px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent);
+    transform: translateY(-1px);
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .btn-ghost:hover { color: var(--text); }
+
+  .hero-stats {
+    display: flex;
+    gap: 48px;
+    margin-top: 72px;
+    padding-top: 40px;
+    border-top: 1px solid var(--border);
+    flex-wrap: wrap;
+  }
+
+  .stat-num {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 40px;
+    font-weight: 300;
+    color: var(--text);
+    line-height: 1;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-muted);
+    letter-spacing: 0.04em;
+    margin-top: 6px;
+  }
+
+  /* MARQUEE */
+  .marquee-wrap {
+    overflow: hidden;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 0;
+    background: var(--white);
+  }
+
+  .marquee-track {
+    display: flex;
+    gap: 0;
+    animation: marquee 28s linear infinite;
+    white-space: nowrap;
+  }
+
+  .marquee-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 20px;
+    padding: 0 32px;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .marquee-dot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+    flex-shrink: 0;
+  }
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  /* WORK SECTION */
+  .work {
+    padding: 100px 48px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 56px;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .section-tag {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garant', serif;
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+  }
+
+  .section-note {
+    font-size: 14px;
+    color: var(--text-muted);
+    max-width: 240px;
+    text-align: right;
+    line-height: 1.5;
+  }
+
+  /* SITE CARDS GRID */
+  .sites-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .site-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+
+  .site-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(26,23,20,0.1);
+  }
+
+  /* BROWSER CHROME */
+  .browser-chrome {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+
+  .browser-dots {
+    display: flex;
+    gap: 5px;
+  }
+
+  .browser-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+
+  .browser-url {
+    flex: 1;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 11px;
+    color: var(--text-muted);
+    font-family: 'DM Sans', sans-serif;
+    letter-spacing: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* IFRAME CONTAINER */
+  .iframe-container {
+    position: relative;
+    height: 380px;
+    overflow: hidden;
+    background: var(--bg2);
+  }
+
+  .iframe-container iframe {
+    width: 100%;
+    height: 900px;
+    border: none;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+    display: block;
+  }
+
+  .site-card:hover .iframe-container iframe {
+    pointer-events: auto;
+  }
+
+  .iframe-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(26,23,20,0);
+    transition: background 0.3s ease;
+    pointer-events: none;
+  }
+
+  .iframe-hint {
+    background: rgba(26,23,20,0.75);
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    padding: 8px 16px;
+    border-radius: 100px;
+    opacity: 0;
+    transform: translateY(6px);
+    transition: all 0.25s ease;
+    pointer-events: none;
+  }
+
+  .site-card:hover .iframe-overlay { background: rgba(26,23,20,0.0); }
+  .site-card .iframe-overlay:hover { background: rgba(26,23,20,0.15); }
+
+  /* CARD FOOTER */
+  .card-footer {
+    padding: 20px 22px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+
+  .card-info {}
+
+  .card-name {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.2;
+    margin-bottom: 3px;
+  }
+
+  .card-desc {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 400;
+  }
+
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 8px 16px;
+    border-radius: 100px;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .card-link:hover {
+    background: var(--text);
+    color: var(--white);
+    border-color: var(--text);
+  }
+
+  .card-link svg {
+    width: 11px;
+    height: 11px;
+    flex-shrink: 0;
+  }
+
+  /* SERVICES STRIP */
+  .services {
+    padding: 80px 48px;
+    background: var(--text);
+    color: var(--bg);
+  }
+
+  .services-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+
+  .services-left .section-tag { color: var(--accent); }
+
+  .services-title {
+    font-family: 'Cormorant Garant', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--bg);
+    margin-top: 10px;
+  }
+
+  .services-title em { font-style: italic; color: var(--accent); }
+
+  .services-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .services-list li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(250,250,248,0.1);
+    font-size: 15px;
+    font-weight: 300;
+    color: rgba(250,250,248,0.8);
+  }
+
+  .services-list li:first-child { border-top: 1px solid rgba(250,250,248,0.1); }
+
+  .service-price {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 18px;
+    color: var(--accent);
+  }
+
+  /* CONTACT */
+  .contact {
+    padding: 100px 48px;
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .contact .section-tag { display: block; margin-bottom: 16px; }
+
+  .contact-title {
+    font-family: 'Cormorant Garant', serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 300;
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin-bottom: 20px;
+  }
+
+  .contact-title em { font-style: italic; color: var(--accent); }
+
+  .contact-sub {
+    font-size: 16px;
+    font-weight: 300;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+    line-height: 1.7;
+  }
+
+  .contact-email {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-family: 'Cormorant Garant', serif;
+    font-size: 24px;
+    font-weight: 300;
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid var(--accent);
+    padding-bottom: 4px;
+    transition: color 0.2s ease;
+  }
+
+  .contact-email:hover { color: var(--accent); }
+
+  /* FOOTER */
+  footer {
+    padding: 32px 48px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garant', serif;
+    font-size: 18px;
+    font-weight: 400;
+    color: var(--text);
+    text-decoration: none;
+  }
+
+  .footer-logo span { color: var(--accent); font-style: italic; }
+
+  .footer-copy {
+    font-size: 12px;
+    color: var(--text-muted);
+  }
+
+  /* ANIMATIONS */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .hero { padding: 120px 20px 60px; }
+    .hero-stats { gap: 28px; }
+    .work { padding: 60px 20px; }
+    .sites-grid { grid-template-columns: 1fr; }
+    .services { padding: 60px 20px; }
+    .services-inner { grid-template-columns: 1fr; gap: 40px; }
+    .contact { padding: 60px 20px; }
+    footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
+    .section-note { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">Dozy<span>Designs</span></a>
+  <a href="#contact" class="nav-cta">Get in touch</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-tag">Beauty Web Design — Scotland</div>
+  <h1>Websites that make your <em>beauty business</em> impossible to ignore</h1>
+  <p class="hero-sub">Bespoke, high-converting websites built specifically for salons, studios and aestheticians across Scotland.</p>
+  <div class="hero-actions">
+    <a href="#work" class="btn-primary">
+      View my work
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="14" height="14"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+    </a>
+    <a href="#contact" class="btn-ghost">
+      Let's talk
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" width="13" height="13"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+    </a>
+  </div>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-num">4+</div>
+      <div class="stat-label">Sites Delivered</div>
+    </div>
+    <div>
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Mobile Optimised</div>
+    </div>
+    <div>
+      <div class="stat-num">5★</div>
+      <div class="stat-label">Client Satisfaction</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item"><span>Beauty Websites</span><span class="marquee-dot"></span></div>
+    <div class="marquee-item"><span>Salon Design</span><span class="marquee-dot"></span></div>
+    <div class="marquee-item"><span>Booking Integration</span><span class="marquee-dot"></span></div>
+    <div class="marquee-item"><span>Mobile First</span><span class="marquee-dot"></span></div>
+    <div class="marquee-item"><span>Scotland Based</span><span class="marquee-dot"></span></div>
+    <div class="marquee-item"><span>Fast Turnaround</span><span class="marquee-dot"></span></div>
+    <div class="marquee-item"><span>Beauty Websites</span><span class="marquee-dot"></span></div>
+    <div class="marquee-item"><span>Salon Design</span><span class="marquee-dot"></span></div>
+    <div class="marquee-item"><span>Booking Integration</span><span class="marquee-dot"></span></div>
+    <div class="marquee-item"><span>Mobile First</span><span class="marquee-dot"></span></div>
+    <div class="marquee-item"><span>Scotland Based</span><span class="marquee-dot"></span></div>
+    <div class="marquee-item"><span>Fast Turnaround</span><span class="marquee-dot"></span></div>
+  </div>
+</div>
+
+<!-- WORK -->
+<section class="work" id="work">
+  <div class="section-header">
+    <div>
+      <div class="section-tag">Selected Work</div>
+      <h2 class="section-title">Beauty sites,<br>built to convert</h2>
+    </div>
+    <p class="section-note">Hover over each preview to explore the site</p>
+  </div>
+
+  <div class="sites-grid">
+
+    <!-- SITE 1 -->
+    <div class="site-card fade-up">
+      <div class="browser-chrome">
+        <div class="browser-dots">
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+        </div>
+        <div class="browser-url">vla-luxury-experience.vercel.app</div>
+      </div>
+      <div class="iframe-container">
+        <iframe src="https://v-la-luxury-experience.vercel.app/" loading="lazy" title="Vēla Aesthetics"></iframe>
+        <div class="iframe-overlay"><span class="iframe-hint">Scroll to explore</span></div>
+      </div>
+      <div class="card-footer">
+        <div class="card-info">
+          <div class="card-name">Vēla Aesthetics</div>
+          <div class="card-desc">Aberdeen — Skin &amp; Aesthetics Studio</div>
+        </div>
+        <a href="https://v-la-luxury-experience.vercel.app/" target="_blank" class="card-link">
+          Visit site
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- SITE 2 -->
+    <div class="site-card fade-up">
+      <div class="browser-chrome">
+        <div class="browser-dots">
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+        </div>
+        <div class="browser-url">gloam-studio-glow.vercel.app</div>
+      </div>
+      <div class="iframe-container">
+        <iframe src="https://gloam-studio-glow.vercel.app/" loading="lazy" title="Gloam Studio"></iframe>
+        <div class="iframe-overlay"><span class="iframe-hint">Scroll to explore</span></div>
+      </div>
+      <div class="card-footer">
+        <div class="card-info">
+          <div class="card-name">Gloam Studio</div>
+          <div class="card-desc">Edinburgh — Brow, Lash &amp; Skin</div>
+        </div>
+        <a href="https://gloam-studio-glow.vercel.app/" target="_blank" class="card-link">
+          Visit site
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- SITE 3 -->
+    <div class="site-card fade-up">
+      <div class="browser-chrome">
+        <div class="browser-dots">
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+        </div>
+        <div class="browser-url">starlight-brow-booking.vercel.app</div>
+      </div>
+      <div class="iframe-container">
+        <iframe src="https://starlight-brow-booking.vercel.app/" loading="lazy" title="Starlight Brows"></iframe>
+        <div class="iframe-overlay"><span class="iframe-hint">Scroll to explore</span></div>
+      </div>
+      <div class="card-footer">
+        <div class="card-info">
+          <div class="card-name">Starlight Brows</div>
+          <div class="card-desc">Glasgow — HD Brow &amp; Lash Specialist</div>
+        </div>
+        <a href="https://starlight-brow-booking.vercel.app/" target="_blank" class="card-link">
+          Visit site
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- SITE 4 — Replit (cropped to hide watermark) -->
+    <div class="site-card fade-up">
+      <div class="browser-chrome">
+        <div class="browser-dots">
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+          <div class="browser-dot"></div>
+        </div>
+        <div class="browser-url">nattys-brow-studio.replit.app</div>
+      </div>
+      <div class="iframe-container" style="height:380px;">
+        <iframe src="https://nattys-brow-studio--oliadamabc.replit.app/" loading="lazy" title="Natty's Brow Studio" style="height:1100px;"></iframe>
+        <div class="iframe-overlay"><span class="iframe-hint">Scroll to explore</span></div>
+      </div>
+      <div class="card-footer">
+        <div class="card-info">
+          <div class="card-name">Natty's Brow Studio</div>
+          <div class="card-desc">Scotland — Brow Specialist</div>
+        </div>
+        <a href="https://nattys-brow-studio--oliadamabc.replit.app/" target="_blank" class="card-link">
+          Visit site
+          <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 11L11 1M11 1H4M11 1v7"/></svg>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICES DARK STRIP -->
+<section class="services">
+  <div class="services-inner">
+    <div class="services-left">
+      <div class="section-tag">What I offer</div>
+      <h2 class="services-title">Everything your beauty business needs <em>online</em></h2>
+    </div>
+    <ul class="services-list">
+      <li>
+        <span>Custom Website Design</span>
+        <span class="service-price">from £400</span>
+      </li>
+      <li>
+        <span>Booking Integration</span>
+        <span class="service-price">included</span>
+      </li>
+      <li>
+        <span>Mobile Optimisation</span>
+        <span class="service-price">included</span>
+      </li>
+      <li>
+        <span>Domain &amp; Hosting Setup</span>
+        <span class="service-price">included</span>
+      </li>
+      <li>
+        <span>Revisions &amp; Edits</span>
+        <span class="service-price">included</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="section-tag">Get in touch</div>
+  <h2 class="contact-title">Ready for a website that <em>works</em>?</h2>
+  <p class="contact-sub">Drop me a message and I'll get back to you within 24 hours. No jargon, no hard sell — just a conversation about what you need.</p>
+  <a href="mailto:olizdanczyk@gmail.com" class="contact-email">olizdanczyk@gmail.com</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="#" class="footer-logo">Dozy<span>Designs</span></a>
+  <p class="footer-copy">© 2026 Dozy Designs — Beauty Web Design, Scotland</p>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 120);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+
+</body>
+</html>
